@@ -1,0 +1,147 @@
+/* Container for the section */
+.holiday {
+  position: relative; /* Keeps the cards positioned relative to this container */
+  width: calc(100% - 40px); /* Reduce width to account for left and right spacing */
+  padding: 20px; /* Add spacing inside the container */
+  margin: 0 auto; /* Center the container horizontally */
+  text-align: center;
+  border-radius: 10px;
+  margin-top: 10%;
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.25); /* Shadow for aesthetic */
+  box-sizing: border-box; /* Include padding in width calculations */
+  display: flex;
+  overflow: visible;
+  flex-direction: column; /* Stack heading, paragraph, and cards */
+   /* Space between the heading, paragraph, and scrollable content */
+}
+
+/* Heading and paragraph styling */
+.holiday h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.holiday p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+/* Scrollable container for the cards */
+.holiday .scrollable-content {
+  overflow-x: auto; /* Enable scrolling if content overflows horizontally */
+  padding-bottom: 10px; /* Space at the bottom to prevent the scrollbar from overlapping */
+  padding-top: 30px;
+  box-sizing: border-box; /* Include padding in width calculations */
+  display: flex; /* Align cards horizontally */
+  gap: 10px; /* Space between cards */
+  padding-left: 10px; /* Add space to the left of the scrollable content */
+  padding-right: 10px; /* Add space to the right of the scrollable content */
+}
+
+/* Optional: Style the scrollbar for better appearance */
+.holiday .scrollable-content::-webkit-scrollbar {
+  height: 8px; /* Height of the scrollbar */
+}
+
+.holiday .scrollable-content::-webkit-scrollbar-thumb {
+  background: #ccc; /* Thumb color */
+  border-radius: 4px; /* Rounded scrollbar edges */
+}
+
+.holiday .scrollable-content::-webkit-scrollbar-track {
+  background: #f5f5f5; /* Track color */
+}
+
+/* Individual card container */
+.h-card {
+  position: relative; /* Position cards relative to normal flow */
+  display: inline-block; /* Ensure cards align horizontally */
+  margin-right: -180px; /* Negative margin for overlapping cards */
+  width: 300px;
+  height: 400px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.4s ease-in-out, z-index 0.4s ease-in-out;
+  z-index: 2;
+}
+
+/* On hover, bring the card forward */
+.h-card:hover ~ .h-card{
+  z-index: 3;
+  transform: translateX(185px) scale(1.05);
+}
+.h-card:hover{
+  z-index: 4;
+  transform: translateY(-20px) rotate(3deg);
+}
+
+/* Card image and data container */
+.h-image {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.4s ease-in-out;
+}
+
+/* Image */
+.h-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-bottom: 2px solid #ddd;
+}
+.h-image::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30%; /* Adjust the height of the shadow */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%); /* Dark gradient */
+  pointer-events: none; /* Ensure the shadow does not affect interactions with text */
+  z-index: 1; /* Keep the gradient behind the text */
+}
+/* Data (name, stars, and price) */
+.h-image h4,
+.h-image p {
+  margin: 0;
+  text-align: left;
+   position: relative; 
+  z-index: 2;
+}
+
+.h-image h4 {
+  margin-top: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.h-image p {
+  margin-top: 0;
+  font-size: 1rem;
+  color: #d2c2c2;
+}
+
+/* Stars */
+.stars {
+  font-size: 1.2rem;
+  color: #f4b400; /* Gold for stars */
+}
+
+/* Bottom placement for name, stars, and price */
+.h-image h4,
+.h-image p {
+  position: relative;
+  bottom: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  text-align: left;
+}
